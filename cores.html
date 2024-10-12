@@ -37,7 +37,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Selecione o mode de jogo</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Selecione o modo de jogo</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -219,6 +219,7 @@
                         }
                         let painel = document.getElementById('container');
                         painel.style.backgroundColor = cores[indice];
+                        indice++;
                     }, interval);
 
                 } else if (modeSelected2) {
@@ -232,6 +233,7 @@
                         }
                         let painel = document.getElementById('container');
                         painel.style.backgroundColor = cores[indice];
+                        indice++;
                     }, interval);
 
 
@@ -246,6 +248,7 @@
                         }
                         let painel = document.getElementById('container');
                         painel.style.backgroundColor = cores[indice];
+                        indice++;
                     }, interval);
                 }
             });

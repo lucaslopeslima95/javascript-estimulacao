@@ -30,35 +30,35 @@
 </head>
 
 <body>
-    <div style="height: 100vh; width:100vw" id="container">
-        <div id="painel"></div>
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center" id="container">
+        <img height="800"  width="600" src="./icons/arrow-up.svg">
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Selecione o mode de jogo</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Selecione o modo de jogo</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="d-flex flex-row">
                         <div>
-                            <h3>Cores</h3>
+                            <h3>direcoes</h3>
                             <div class="d-flex flex-row align-items-center" class="jg1">
                                 <input type="checkbox" class="me-2 seletor-cor" name="" id="jg1">
                                 Jogo 1 :
                                 <ul class="list-colors">
                                     <li>
-                                        <i class="bi bi-arrow-down"></i>
+                                        <img src="icons\arrow-down.svg">
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-left"></i>
+                                        <img src="icons\arrow-left.svg" >
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-right"></i>
+                                        <img src="icons\arrow-right.svg" >
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-up"></i>
+                                        <img src="icons\arrow-up.svg" alt="">
                                     </li>
                                 </ul>
                             </div>
@@ -67,16 +67,16 @@
                                 Jogo 2 :
                                 <ul class="list-colors">
                                     <li>
-                                        <i class="bi bi-arrow-up"></i>
+                                        <img src="icons\arrow-up.svg" alt="">
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-down"></i>
+                                        <img src="icons\arrow-down.svg">
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-left"></i>
+                                        <img src="icons\arrow-right.svg" alt="" srcset="">
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-right"></i>
+                                        <img src="icons\arrow-left.svg" >
                                     </li>
                                 </ul>
                             </div>
@@ -85,16 +85,16 @@
                                 Jogo 3 :
                                 <ul class="list-colors">
                                     <li>
-                                        <i class="bi bi-arrow-left"></i>
+                                        <img src="icons\arrow-left.svg" >
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-up"></i>
+                                        <img src="icons\arrow-up.svg" alt="">
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-down"></i>
+                                        <img src="icons\arrow-down.svg">
                                     </li>
                                     <li>
-                                        <i class="bi bi-arrow-right"></i>
+                                        <img src="icons\arrow-right.svg" alt="" srcset="">
                                     </li>
                                 </ul>
                             </div>
@@ -141,8 +141,6 @@
                 const myModalEl = document.getElementById('exampleModal');
                 const myModal = bootstrap.Modal.getInstance(myModalEl);
                 
-   
-
                 let velSelecionada = false;
                 let corSelecionada = false;
 
@@ -159,7 +157,7 @@
                 });
 
                 if(!velSelecionada || !corSelecionada){
-                    alert('Selecione a conbinção de cores e velocidade para começar!');
+                    alert('Selecione a conbinção de direcoes e velocidade para começar!');
                     return;
                 }
 
@@ -184,43 +182,49 @@
 
                 if (modeSelected1) {
 
-                    const cores = ['#fab529', '#447d60', '#05c176', '#0ad586', '#7a4514', '#7da9b2', '#814c5c'];
+                    const direcoes = ["./icons/arrow-down.svg","./icons/arrow-left.svg","./icons/arrow-right.svg","./icons/arrow-up.svg"];
+
+                    let indice = 0;
 
                     setInterval(function () {
-                        let indiceAleatorio = Math.floor(Math.random() * cores.length);
-                        let painel = document.getElementById('container');
-                        painel.style.backgroundColor = cores[indiceAleatorio];
-                        if (event.key === "Escape") {
-                            clearInterval(interval);
-                            window.location.href = 'meAcerte.html';
+                        indice++;
+                        if(indice == 4){
+                            indice = 0;
                         }
+                        let setaImg = document.querySelector('#container > img');
+                        setaImg.setAttribute('src', direcoes[indice]);
                     }, interval);
+
 
                 } else if (modeSelected2) {
-                    const cores = ["#ff6347", "#4682b4", "#32cd32", "#8b0000", "#ff1493", "#ff4500", "#40e0d0"];
+                    const direcoes = ["./icons/arrow-up.svg","./icons/arrow-down.svg","./icons/arrow-right.svg","./icons/arrow-left.svg"];
+
+                    let indice = 0;
 
                     setInterval(function () {
-                        let indiceAleatorio = Math.floor(Math.random() * cores.length);
-                        let painel = document.getElementById('container');
-                        painel.style.backgroundColor = cores[indiceAleatorio];
-                        if (event.key === "Escape") {
-                            clearInterval(interval);
-                            window.location.href = 'meAcerte.html';
+                        indice++;
+                        
+                        if(indice == 4){
+                            indice = 0;
                         }
-                    },interval);
+                        let setaImg = document.querySelector('#container > img');
+                        setaImg.setAttribute('src', direcoes[indice]);
+                    }, interval);
 
                 } else if (modeSelected3) {
-                    const cores = ["#ff5733","#33ff57","#3357ff", "#ff33a1", "#a133ff", "#ffb833", "#33fff6" ];
+
+                    const direcoes = ["./icons/arrow-left.svg","./icons/arrow-up.svg" ,"./icons/arrow-down.svg","./icons/arrow-right.svg"];
+                    let indice = 0;
 
                     setInterval(function () {
-                        let indiceAleatorio = Math.floor(Math.random() * cores.length);
-                        let painel = document.getElementById('container');
-                        painel.style.backgroundColor = cores[indiceAleatorio];
-                        if (event.key === "Escape") {
-                            clearInterval(interval);
-                            window.location.href = 'meAcerte.html';
+                        indice++;
+                        if(indice == 4){
+                            indice = 0;
                         }
+                        let setaImg = document.querySelector('#container > img');
+                        setaImg.setAttribute('src', direcoes[indice]);
                     }, interval);
+
                 }
             });
         </script>
