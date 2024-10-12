@@ -49,25 +49,16 @@
                                 Jogo 1 :
                                 <ul class="list-colors">
                                     <li>
-                                        <div class="quadroCor" style="background-color: #f78a5f;"></div>
+                                        <i class="bi bi-arrow-down"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #ff000c;"></div>
+                                        <i class="bi bi-arrow-left"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #056549;"></div>
+                                        <i class="bi bi-arrow-right"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #d9d639;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #e57ca4;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #1f50ad;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #64528e;"></div>
+                                        <i class="bi bi-arrow-up"></i>
                                     </li>
                                 </ul>
                             </div>
@@ -76,25 +67,16 @@
                                 Jogo 2 :
                                 <ul class="list-colors">
                                     <li>
-                                        <div class="quadroCor" style="background-color: #d9d639;"></div>
+                                        <i class="bi bi-arrow-up"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #f78a5f;"></div>
+                                        <i class="bi bi-arrow-down"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #e57ca4;"></div>
+                                        <i class="bi bi-arrow-left"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #ff000c;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #1f50ad;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #64528e;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #056549;"></div>
+                                        <i class="bi bi-arrow-right"></i>
                                     </li>
                                 </ul>
                             </div>
@@ -103,25 +85,16 @@
                                 Jogo 3 :
                                 <ul class="list-colors">
                                     <li>
-                                        <div class="quadroCor" style="background-color: #e57ca4;"></div>
+                                        <i class="bi bi-arrow-left"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #d9d639;"></div>
+                                        <i class="bi bi-arrow-up"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #1f50ad;"></div>
+                                        <i class="bi bi-arrow-down"></i>
                                     </li>
                                     <li>
-                                        <div class="quadroCor" style="background-color: #64528e;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #056549;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #f78a5f;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="quadroCor" style="background-color: #ff000c;"></div>
+                                        <i class="bi bi-arrow-right"></i>
                                     </li>
                                 </ul>
                             </div>
@@ -168,6 +141,7 @@
                 const myModalEl = document.getElementById('exampleModal');
                 const myModal = bootstrap.Modal.getInstance(myModalEl);
                 
+   
 
                 let velSelecionada = false;
                 let corSelecionada = false;
@@ -210,42 +184,42 @@
 
                 if (modeSelected1) {
 
-                    const cores = ['#f78a5f','#ff000c','#056549','#d9d639','#e57ca4','#1f50ad','#64528e'];
-                    let indice = 0;
+                    const cores = ['#fab529', '#447d60', '#05c176', '#0ad586', '#7a4514', '#7da9b2', '#814c5c'];
 
                     setInterval(function () {
-                        if(indice => cores.length){
-                            indice = 0;
-                        }
+                        let indiceAleatorio = Math.floor(Math.random() * cores.length);
                         let painel = document.getElementById('container');
-                        painel.style.backgroundColor = cores[indice];
+                        painel.style.backgroundColor = cores[indiceAleatorio];
+                        if (event.key === "Escape") {
+                            clearInterval(interval);
+                            window.location.href = 'meAcerte.html';
+                        }
                     }, interval);
 
                 } else if (modeSelected2) {
-
-                    const cores = ['#d9d639','#f78a5f','#e57ca4','#ff000c','#1f50ad','#64528e','#056549'];
-                    let indice = 0;
+                    const cores = ["#ff6347", "#4682b4", "#32cd32", "#8b0000", "#ff1493", "#ff4500", "#40e0d0"];
 
                     setInterval(function () {
-                        if(indice => cores.length){
-                            indice = 0;
-                        }
+                        let indiceAleatorio = Math.floor(Math.random() * cores.length);
                         let painel = document.getElementById('container');
-                        painel.style.backgroundColor = cores[indice];
-                    }, interval);
-
+                        painel.style.backgroundColor = cores[indiceAleatorio];
+                        if (event.key === "Escape") {
+                            clearInterval(interval);
+                            window.location.href = 'meAcerte.html';
+                        }
+                    },interval);
 
                 } else if (modeSelected3) {
-
                     const cores = ["#ff5733","#33ff57","#3357ff", "#ff33a1", "#a133ff", "#ffb833", "#33fff6" ];
 
-                    let indice = 0;
                     setInterval(function () {
-                        if(indice => cores.length){
-                            indice = 0;
-                        }
+                        let indiceAleatorio = Math.floor(Math.random() * cores.length);
                         let painel = document.getElementById('container');
-                        painel.style.backgroundColor = cores[indice];
+                        painel.style.backgroundColor = cores[indiceAleatorio];
+                        if (event.key === "Escape") {
+                            clearInterval(interval);
+                            window.location.href = 'meAcerte.html';
+                        }
                     }, interval);
                 }
             });
