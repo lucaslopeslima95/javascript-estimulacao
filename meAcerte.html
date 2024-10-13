@@ -58,6 +58,7 @@
                 <li id="cores">Acerte as cores</li>
                 <li id="figuras">Acerte a seta</li>
                 <li id="cobrinha">Jogo da cobrinha</li>
+                <li id="coresSeta">Acerte as cores com seta</li>
             </ul>
         </div>
     </div>
@@ -77,6 +78,12 @@
         cobrinha.addEventListener('click', function() {
             window.location.href = 'snake/snake.html';
         });
+
+        const coresSeta = document.getElementById('coresSeta');
+        coresSeta.addEventListener('click', function() {
+            window.location.href = 'coresSeta.html';
+        });
+
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

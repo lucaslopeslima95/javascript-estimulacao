@@ -23,14 +23,18 @@
             list-style: none;
             display: flex;
             flex-direction: row;
-            margin-top: 14px;
+            align-items: flex-start;
+            justify-content: flex-start;
+
         }
     </style>
 </head>
 
 <body>
-    <div class="w-100 h-100 d-flex justify-content-center align-items-center" id="container">
-        <img height="600"  width="400" src="./icons/arrow-up.svg">
+    <div style="height: 100vh; width:100vw" id="container">
+        <div id="painel" style="display: flex; width: 100%; height: 100%; justify-content: center; align-items: center;">
+            <img height="600" id="setaContainer"  width="400" src="icons\arrow-left.svg" >
+        </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -41,64 +45,34 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex flex-row">
-                        <div>
-                            <h3>direcoes</h3>
+                        <div class="d-flex flex-column flex-start">
+                            <h3>Cores</h3>
                             <div class="d-flex flex-row align-items-center" class="jg1">
-                                <input type="checkbox" class="me-2 seletor-cor" name="" id="jg1">
-                                Jogo 1 :
                                 <ul class="list-colors">
                                     <li>
-                                        <img src="icons\arrow-down.svg">
+                                        <div class="quadroCor" style="background-color: #f78a5f;"></div>
                                     </li>
                                     <li>
-                                        <img src="icons\arrow-left.svg" >
+                                        <div class="quadroCor" style="background-color: #ff000c;"></div>
                                     </li>
                                     <li>
-                                        <img src="icons\arrow-right.svg" >
+                                        <div class="quadroCor" style="background-color: #056549;"></div>
                                     </li>
                                     <li>
-                                        <img src="icons\arrow-up.svg" alt="">
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                                <input type="checkbox" class="me-2 seletor-cor" name="" id="jg2">
-                                Jogo 2 :
-                                <ul class="list-colors">
-                                    <li>
-                                        <img src="icons\arrow-up.svg" alt="">
+                                        <div class="quadroCor" style="background-color: #d9d639;"></div>
                                     </li>
                                     <li>
-                                        <img src="icons\arrow-down.svg">
+                                        <div class="quadroCor" style="background-color: #e57ca4;"></div>
                                     </li>
                                     <li>
-                                        <img src="icons\arrow-right.svg" alt="" srcset="">
+                                        <div class="quadroCor" style="background-color: #1f50ad;"></div>
                                     </li>
                                     <li>
-                                        <img src="icons\arrow-left.svg" >
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                                <input type="checkbox" class="me-2 seletor-cor" name="" id="jg3">
-                                Jogo 3 :
-                                <ul class="list-colors">
-                                    <li>
-                                        <img src="icons\arrow-left.svg" >
-                                    </li>
-                                    <li>
-                                        <img src="icons\arrow-up.svg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="icons\arrow-down.svg">
-                                    </li>
-                                    <li>
-                                        <img src="icons\arrow-right.svg">
+                                        <div class="quadroCor" style="background-color: #64528e;"></div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- --------------------------------------------------- -->
                         <div class="ms-4 mt-2">
                             <h3>Velocidade</h3>
                             <div class="d-flex flex-row align-items-center">
@@ -113,10 +87,9 @@
                                 <input type="radio" class="me-2 seletor-vel" name="velocidade" id="vl3">
                                 3x : Rapidão
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
-                <!-- -------------------------------------------------------- -->
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-secondary" id="btn-voltar">Voltar</button>
                     <button type="button" class="btn btn-primary" id="btn-comecar">Começar</button>
@@ -139,9 +112,8 @@
             document.getElementById('btn-comecar').addEventListener('click', function () {
                 const myModalEl = document.getElementById('exampleModal');
                 const myModal = bootstrap.Modal.getInstance(myModalEl);
-                
+
                 let velSelecionada = false;
-                let corSelecionada = false;
 
                 document.querySelectorAll('.seletor-vel').forEach((element)=>{
                     if(element.checked){
@@ -149,21 +121,12 @@
                     }
                 });
 
-                document.querySelectorAll('.seletor-cor').forEach((element)=>{
-                    if(element.checked){
-                        corSelecionada = true;
-                    }
-                });
-
-                if(!velSelecionada || !corSelecionada){
-                    alert('Selecione a conbinção de direcoes e velocidade para começar!');
+                if(!velSelecionada){
+                    alert('Selecione a velocidade para começar!');
                     return;
                 }
 
                 myModal.hide();
-                let modeSelected1 = document.getElementById('jg1').checked;
-                let modeSelected2 = document.getElementById('jg2').checked;
-                let modeSelected3 = document.getElementById('jg3').checked;
 
                 let velSelected1 = document.getElementById('vl1').checked;
                 let velSelected2 = document.getElementById('vl2').checked;
@@ -172,59 +135,33 @@
                 let interval = 3000;
 
                 if(velSelected1){
+
                     interval = 5000;
                 }else if(velSelected1){
+
                     interval = 2500;
                 }else{
+
                     interval = 1000;
                 }
 
-                if (modeSelected1) {
+                const imagens = ["icons/arrow-left.svg" , "icons/arrow-right.svg"];
 
-                    const direcoes = ["./icons/arrow-down.svg","./icons/arrow-left.svg","./icons/arrow-right.svg","./icons/arrow-up.svg"];
+                const cores = ['#f78a5f','#ff000c','#056549','#d9d639','#e57ca4','#1f50ad','#64528e'];
 
-                    let indice = 0;
+                setInterval(function () {
 
-                    setInterval(function () {
-                        indice++;
-                        if(indice == 4){
-                            indice = 0;
-                        }
-                        let setaImg = document.querySelector('#container > img');
-                        setaImg.setAttribute('src', direcoes[indice]);
-                    }, interval);
+                    let indice = Math.floor(Math.random() * cores.length);
+                    let painel = document.getElementById('container');
 
+                    let setaContainer = document.getElementById('setaContainer');
 
-                } else if (modeSelected2) {
-                    const direcoes = ["./icons/arrow-up.svg","./icons/arrow-down.svg","./icons/arrow-right.svg","./icons/arrow-left.svg"];
+                    let idxImg = Math.floor(Math.random() * imagens.length);
+                    setaContainer.setAttribute('src',imagens[idxImg]);
+                    painel.style.backgroundColor = cores[indice];
+                    
+                }, interval);
 
-                    let indice = 0;
-
-                    setInterval(function () {
-                        indice++;
-                        
-                        if(indice == 4){
-                            indice = 0;
-                        }
-                        let setaImg = document.querySelector('#container > img');
-                        setaImg.setAttribute('src', direcoes[indice]);
-                    }, interval);
-
-                } else if (modeSelected3) {
-
-                    const direcoes = ["./icons/arrow-left.svg","./icons/arrow-up.svg" ,"./icons/arrow-down.svg","./icons/arrow-right.svg"];
-                    let indice = 0;
-
-                    setInterval(function () {
-                        indice++;
-                        if(indice == 4){
-                            indice = 0;
-                        }
-                        let setaImg = document.querySelector('#container > img');
-                        setaImg.setAttribute('src', direcoes[indice]);
-                    }, interval);
-
-                }
             });
         </script>
 </body>
